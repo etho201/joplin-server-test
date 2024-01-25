@@ -54,6 +54,10 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - uses: actionhippie/swap-space@v1
+        with:
+          size: 32G
+
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
