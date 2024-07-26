@@ -59,7 +59,7 @@ jobs:
           size: 32G
 
       - name: Build and push
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: ./joplin/
           # file: ./joplin/Dockerfile.server
@@ -71,7 +71,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Update repo description
-        uses: peter-evans/dockerhub-description@v3
+        uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
