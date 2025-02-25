@@ -9,12 +9,15 @@ jobs:
   arch_matrix:
     strategy:
       matrix:
+        os: [ubuntu-latest, ubuntu-24.04-arm]
         include:
           - os: ubuntu-latest
             arch: linux/amd64
+            dockerfile: ./joplin/Dockerfile.server
           - os: ubuntu-24.04-arm
             arch: linux/arm64    
-    runs-on: ${{ matrix.include.os }}
+            dockerfile: ./joplin-arm-fix/Dockerfile.server
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout Dockerfile
         uses: actions/checkout@v4
@@ -60,9 +63,9 @@ jobs:
         with:
           context: ./joplin/
           # file: ./joplin/Dockerfile.server
-          file: ./joplin-arm-fix/Dockerfile.server
+          file: ./{{ matrix.dockerfile }}
           # platforms: linux/amd64,linux/arm64,linux/arm/v7
-          platforms: {{  matrix.include.arch }}
+          platforms: {{  matrix.arch }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
