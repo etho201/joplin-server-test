@@ -8,10 +8,8 @@ on:
 jobs:
   arch_matrix:
     strategy:
-      - matrix.os: ubuntu-latest
-        matrix.arch: amd64
-      - matrix.os: ubuntu-24.04-arm
-        matrix.arch: arm64
+      matrix:
+        os: [ubuntu-24.04-arm]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout Dockerfile
@@ -60,7 +58,7 @@ jobs:
           # file: ./joplin/Dockerfile.server
           file: ./joplin-arm-fix/Dockerfile.server
           # platforms: linux/amd64,linux/arm64,linux/arm/v7
-          platforms: linux/${{ matrix.arch }}
+          platforms: linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
