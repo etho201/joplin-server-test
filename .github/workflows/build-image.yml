@@ -59,7 +59,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and push
+      - name: Build
         uses: docker/build-push-action@v6
         with:
           context: ./joplin/
@@ -86,11 +86,11 @@ jobs:
       - name: Download digests
         uses: actions/download-artifact@v4
         with:
-          path: ${{ runner.temp }}/digests
+          # path: ${{ runner.temp }}/digests
           # pattern: digests-*
           merge-multiple: true
 
-      - name: Build and push
+      - name: Push
         uses: docker/build-push-action@v6
         with:
           # platforms: linux/amd64,linux/arm64,linux/arm/v7
