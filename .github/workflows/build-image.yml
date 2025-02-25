@@ -87,7 +87,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           # path: ${{ runner.temp }}/digests
-          pattern:  pattern: artifacts-*
+          pattern:  artifacts-*
           merge-multiple: true
 
       - name: Push
