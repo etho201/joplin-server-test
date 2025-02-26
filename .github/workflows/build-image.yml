@@ -154,6 +154,9 @@ jobs:
           docker buildx imagetools inspect ${{ env.DOCKERHUB_REPO }}:${{ steps.meta.outputs.version }}
           docker buildx imagetools inspect ${{ env.GHCR_REPO }}:${{ steps.meta.outputs.version }}
 
+      - name: Checkout README
+        uses: actions/checkout@v4
+
       - name: Update repo description
         uses: peter-evans/dockerhub-description@v4
         with:
