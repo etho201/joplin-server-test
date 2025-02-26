@@ -7,7 +7,7 @@ on:
 
 env:
   DOCKERHUB_REPO: etechonomy/joplin-server-test
-  GHCR_REPO: ghcr.io/etechonomy/joplin-server-test
+  GHCR_REPO: ghcr.io/etho201/joplin-server-test
 
 jobs:
   build:
