@@ -6,8 +6,8 @@ on:
       - 'v*.*.*'
 
 env:
-  DOCKERHUB_REPO: etechonomy/joplin-server
-  GHCR_REPO: ghcr.io/etechonomy/joplin-server
+  DOCKERHUB_REPO: etechonomy/joplin-server-test
+  GHCR_REPO: ghcr.io/etho201/joplin-server-test
 
 jobs:
   build:
